@@ -10,12 +10,15 @@ function App() {
 
   return (
     <div className="App">
+      
      <Homepage 
+     className='Homepage'
      employees = {employeeList}
      setSelectedEmployee = {setSelectedEmployee}
      setEmployees = {setEmployeeList}
      />
      <EmployeePage 
+     className='Employeepage'
      employee={selectedEmployee}
      text="Empolyee Page"/>
      

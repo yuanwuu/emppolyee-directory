@@ -1,26 +1,33 @@
 import Header from "./Header";
-import SearchBar from "./SearchBar";
-import EmployeeList from './EmployeeList'
+import { Route, Routes , Link} from "react-router-dom";
+import empolyees from '../data'
+import EmployeePage from '../components/EmployeePage'
 
+export default function Homepage (
 
-export default function Homepage ({
-    employees,
-    setSelectedEmployee,
-    setEmployees,
-}) {
+) {
     return (
         <div>
+            
             <Header text="Empolyee Directory"/>
-            <SearchBar 
-                setEmployees={setEmployees}
-                employees={employees}
-            />
-            <EmployeeList 
-            employees={employees}
-            setSelectedEmployee={setSelectedEmployee}
-            />
+            {empolyees.map((employee) => {
+                return (
+                    <li key={employee.id}> 
+                    <Link to={`/employees/${employee.id}`}>
+                        <h1>{employee.name}</h1>
+                        <img src={employee.img} />
+                    </Link>
+                    </li>
+                )
+            
+            })}
+            <Routes>
+                <Route path="/employees/:id" element={<EmployeePage />} />
+            </Routes>
           
         </div>
     )
 } 
+
+
 

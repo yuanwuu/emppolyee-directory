@@ -1,19 +1,22 @@
-import employees from '../data'
-// import { Routes, Route} from 'react-router-dom'
+import employeeData from '../data'
+import { useParams } from 'react-router-dom'
 
-export default function EmployeeListItem ({ name, role, img,id,handleClick}) {
+export default function EmployeeListItem (props) {
 
-    // const handleClickItem = () =>{
-    //   handleClick(id)
-    // }
+  const {id} = useParams()
+  console.log(id)
+
+  const currentEmpolyee = employeeData.find((empolyee)=>{
+    return id === empolyee.id
+  })
+    
     return (
         <div className='employeelistitem'>
-          
-          <img className='pic' src={img} />
-            <div
-            onClick={() =>{handleClick(id)}}>
-              <h3>{name}</h3>
-              <h6>{role}</h6>
+      
+          <img className='pic' src={currentEmpolyee.img} />
+            <div>
+              <h3>{currentEmpolyee.name}</h3>
+              <h6>{currentEmpolyee.role}</h6>
             </div>
 
         </div>

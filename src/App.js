@@ -1,29 +1,16 @@
+
 import './App.css';
-import employeeData from './data';
 import Homepage from './components/Homepage';
 import EmployeePage from './components/EmployeePage';
-import { useState } from 'react';
+import{ Route, Routes} from 'react-router-dom'
 
-function App() {
-  const [employeeList, setEmployeeList] = useState(employeeData)
-  const [selectedEmployee, setSelectedEmployee] = useState(null)
-
+export default function App() {
   return (
-    <div className="App">
-      
-     <Homepage 
-     className='Homepage'
-     employees = {employeeList}
-     setSelectedEmployee = {setSelectedEmployee}
-     setEmployees = {setEmployeeList}
-     />
-     <EmployeePage 
-     className='Employeepage'
-     employee={selectedEmployee}
-     text="Empolyee Page"/>
-     
+    <div className='App'>
+      <Routes>
+        <Route path='/employees' element={<Homepage />} />
+        <Route path='/employees/:id' element = {<EmployeePage />} />
+      </Routes>
     </div>
-  );
+  )
 }
-
-export default App;
